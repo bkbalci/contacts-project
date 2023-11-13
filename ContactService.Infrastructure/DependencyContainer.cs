@@ -16,5 +16,6 @@ public static class DependencyContainer
             options.UseNpgsql(connectionString));
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserContactInfoRepository, UserContactInfoRepository>();
     }
 }

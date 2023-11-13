@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json.Linq;
 using ReportService.Domain.Enums;
 
 namespace ReportService.Domain.Entities;
@@ -12,6 +13,6 @@ public class Report
     public DateTime RequestDate { get; set; }
 
     public ReportStatus ReportStatus { get; set; }
-
-    public BsonDocument Content { get; set; }
+    
+    public List<BsonDocument> Content { get; set; }
 }

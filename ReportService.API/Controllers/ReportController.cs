@@ -34,14 +34,14 @@ public class ReportController : BaseController
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var response = await _reportsService.GetAsync();
+        var response = await _reportsService.GetMappedAsync();
         return CreateActionResult(response);
     }
     
     [HttpGet("{uuid}")]
     public async Task<IActionResult> Get(Guid uuid)
     {
-        var response = await _reportsService.GetAsync(uuid);
+        var response = await _reportsService.GetMappedAsync(uuid);
         return CreateActionResult(response);
     }
 }

@@ -17,9 +17,17 @@ public class ContactController : BaseController
     }
     
     [HttpPost]
-    public async Task<IActionResult> Create(CreateUserDto request)
+    public async Task<IActionResult> Create(AddContactInfoDto request)
     {
-        var response = await _userService.CreateUser(request);
+        var response = await _userService.AddContactInfo(request);
+        return CreateActionResult(response);
+    }
+    
+    
+    [HttpDelete]
+    public async Task<IActionResult> Delete(AddContactInfoDto request)
+    {
+        var response = await _userService.RemoveContactInfo(request);
         return CreateActionResult(response);
     }
 }

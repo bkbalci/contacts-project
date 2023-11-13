@@ -6,5 +6,5 @@ public class MongoDbSettings
 
     public string DatabaseName { get; set; } = null!;
 
-    public string BooksCollectionName { get; set; } = null!;
+    public string ReportsCollectionName { get; set; } = null!;
 }

@@ -8,9 +8,11 @@ namespace ReportService.Application.Services;
 public class QueueService
 {
     private readonly RabbitMqSettings _rabbitMqSettings;
+    public string QueueName { get; private set; }
     public QueueService(IOptions<RabbitMqSettings> options)
     {
         _rabbitMqSettings = options.Value;
+        QueueName = _rabbitMqSettings.QueueName;
     }
 
     public ConnectionFactory GetConnectionFactory()
