@@ -8,6 +8,9 @@ services:
     build:
       context: .
       dockerfile: Services/ContactService/ContactService.API/Dockerfile
+    environment:
+      - ConnectionStrings__Default=User ID=postgres;Password=Password12*;Server=contact-db;Port=5432;Database=contactdb;Integrated Security=true;Pooling=true;
+      - MIGRATE_DB=1
     ports:
       - "8080:80"
       - "8081:443"
@@ -21,6 +24,9 @@ services:
     build:
       context: .
       dockerfile: Services/ReportService/ReportService.API/Dockerfile
+    environment:
+      - RabbitMqSettings__HostName=queue
+      - MongoDbSettings__ConnectionString=mongodb://reports-db:27017
     ports:
       - "8090:80"
       - "8091:443"
@@ -61,8 +67,22 @@ services:
       - rabbitmq-volume:/var/lib/rabbitmq
     networks:
       - contact-network
-        
-  volumes:
-    db_volume:
-    mongo_volume:
-    rabbitmq-volume:
+  
+  report-service.consumer:
+    image: report-service.consumer
+    build:
+      context: .
+      dockerfile: Services/ReportService/ReportService.Consumer/Dockerfile
+    environment:
+      - ConnectionStrings__Default=User ID=postgres;Password=Password12*;Server=contact-db;Port=5432;Database=contactdb;Integrated Security=true;Pooling=true;
+      - MongoDbSettings__ConnectionString=mongodb://reports-db:27017
+      - RabbitMqSettings__HostName=queue
+    depends_on:
+      - "queue"
+    networks:
+      - contact-network
+      
+volumes:
+  db_volume:
+  mongo_volume:
+  rabbitmq-volume:

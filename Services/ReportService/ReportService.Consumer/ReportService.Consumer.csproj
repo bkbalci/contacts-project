@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-ReportService.Consumer-4b141dbb-615e-4ce1-87fc-103616919a16</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,5 +15,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Services\ContactService\ContactService.Application\ContactService.Application.csproj" />
     <ProjectReference Include="..\ReportService.Application\ReportService.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
 </Project>

@@ -1,6 +1,9 @@
 using System.Text.Json.Serialization;
 using ContactService.Application;
+using ContactService.Domain.Repositories;
 using ContactService.Infrastructure;
+using ContactService.Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -16,7 +19,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+if (Environment.GetEnvironmentVariable("MIGRATE_DB") == "1")
+{
+    MigrateDb();
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -31,3 +37,12 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+void MigrateDb()
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var appDbContext = services.GetRequiredService<ContactDbContext>();
+    appDbContext.Database.Migrate();
+}

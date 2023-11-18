@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "1d804fd7-4e60-4311-9450-6f24af04386c",
+		"name": "ContactProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3782843"
+	},
+	"item": [
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{contactServiceHost}}/user",
+					"host": [
+						"{{contactServiceHost}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{contactServiceHost}}/user/45afcfc2-b8e1-4980-9e1c-7e4490466402",
+					"host": [
+						"{{contactServiceHost}}"
+					],
+					"path": [
+						"user",
+						"45afcfc2-b8e1-4980-9e1c-7e4490466402"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Burak\",\r\n    \"surname\":\"Balcı\",\r\n    \"companyName\":\"Acme\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{contactServiceHost}}/user",
+					"host": [
+						"{{contactServiceHost}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateContactInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"45afcfc2-b8e1-4980-9e1c-7e4490466402\",\r\n    \"contactType\":\"Phone\",\r\n    \"contactTypeValue\":\"5448645353\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{contactServiceHost}}/contact",
+					"host": [
+						"{{contactServiceHost}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteContactInfo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"45afcfc2-b8e1-4980-9e1c-7e4490466402\",\r\n    \"contactType\":\"Phone\",\r\n    \"contactTypeValue\":\"5448645353\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{contactServiceHost}}/contact",
+					"host": [
+						"{{contactServiceHost}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReport",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{reportServiceHost}}/report",
+					"host": [
+						"{{reportServiceHost}}"
+					],
+					"path": [
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReportDetail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{reportServiceHost}}/report/c2451b45-0512-4df5-9d02-ea2f9750eda3",
+					"host": [
+						"{{reportServiceHost}}"
+					],
+					"path": [
+						"report",
+						"c2451b45-0512-4df5-9d02-ea2f9750eda3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateReport",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{reportServiceHost}}/report",
+					"host": [
+						"{{reportServiceHost}}"
+					],
+					"path": [
+						"report"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "contactServiceHost",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "reportServiceHost",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
