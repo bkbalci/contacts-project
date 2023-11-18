@@ -5,10 +5,13 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["ReportService.API/ReportService.API.csproj", "ReportService.API/"]
-RUN dotnet restore "ReportService.API/ReportService.API.csproj"
+COPY ["Services/ReportService/ReportService.API/ReportService.API.csproj", "Services/ReportService/ReportService.API/"]
+COPY ["Services/ReportService/ReportService.Application/ReportService.Application.csproj", "Services/ReportService/ReportService.Application/"]
+COPY ["Services/ReportService/ReportService.Domain/ReportService.Domain.csproj", "Services/ReportService/ReportService.Domain/"]
+COPY ["Core/ContactProject.Core/ContactProject.Core.csproj", "Core/ContactProject.Core/"]
+RUN dotnet restore "Services/ReportService/ReportService.API/ReportService.API.csproj"
 COPY . .
-WORKDIR "/src/ReportService.API"
+WORKDIR "/src/Services/ReportService/ReportService.API"
 RUN dotnet build "ReportService.API.csproj" -c Release -o /app/build
 
 FROM build AS publish

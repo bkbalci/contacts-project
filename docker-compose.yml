@@ -1,0 +1,68 @@
+﻿networks:
+  contact-network:
+    driver: bridge
+
+services:
+  contact-service.api:
+    image: contact-service.api
+    build:
+      context: .
+      dockerfile: Services/ContactService/ContactService.API/Dockerfile
+    ports:
+      - "8080:80"
+      - "8081:443"
+    depends_on:
+      - "contact-db"
+    networks:
+      - contact-network
+
+  report-service.api:
+    image: report-service.api
+    build:
+      context: .
+      dockerfile: Services/ReportService/ReportService.API/Dockerfile
+    ports:
+      - "8090:80"
+      - "8091:443"
+    depends_on:
+      - "contact-db"
+      - "reports-db"
+    networks:
+      - contact-network
+      
+  contact-db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Password12*"
+      POSTGRES_DB: "contactdb"
+    networks:
+      - contact-network
+        
+  reports-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_volume:/data/db
+    networks:
+      - contact-network
+  
+  queue:
+    image: rabbitmq:3.12-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+    networks:
+      - contact-network
+        
+  volumes:
+    db_volume:
+    mongo_volume:
+    rabbitmq-volume:
