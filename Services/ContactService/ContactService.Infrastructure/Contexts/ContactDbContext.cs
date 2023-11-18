@@ -1,9 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ContactService.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ContactService.Infrastructure.Contexts;
 
 public class ContactDbContext : DbContext
 {
+    public DbSet<User> Users { get; set; }
+    public DbSet<UserContactInfo> UserContactInfos { get; set; }
     
     public ContactDbContext(DbContextOptions<ContactDbContext> options)
         : base(options)
