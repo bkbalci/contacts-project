@@ -57,7 +57,7 @@ public class Worker : BackgroundService
                             Console.WriteLine($"Report is generated: {reportGuid}");
                             var report = reportResult.Data;
                             reportRequest.ReportStatus = ReportStatus.Completed;
-                            reportRequest.Content = report.Select(x => x.ToBsonDocument()).ToList();
+                            reportRequest.Content = report;
                             Console.WriteLine($"Updating report status: {reportGuid}");
                             var result = await reportsService.UpdateAsync(reportRequest.UUID, reportRequest);
                             Console.WriteLine($"Report status is updated: {reportGuid}");

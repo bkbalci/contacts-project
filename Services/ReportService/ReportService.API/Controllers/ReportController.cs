@@ -41,7 +41,7 @@ public class ReportController : BaseController
     [HttpGet("{uuid}")]
     public async Task<IActionResult> Get(Guid uuid)
     {
-        var response = await _reportsService.GetMappedAsync(uuid);
+        var response = await _reportsService.GetAsync(uuid);
         return CreateActionResult(response);
     }
 }

@@ -1,6 +1,6 @@
-﻿using ContactService.Domain.Core;
+﻿using ContactProject.Core.ReportModels;
+using ContactService.Domain.Core;
 using ContactService.Domain.Entities;
-using ContactService.Domain.Models;
 
 namespace ContactService.Domain.Repositories;
 

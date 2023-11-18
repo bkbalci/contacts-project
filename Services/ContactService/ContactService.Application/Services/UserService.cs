@@ -1,6 +1,6 @@
-﻿using ContactService.Domain.Dto;
+﻿using ContactProject.Core.ReportModels;
+using ContactService.Domain.Dto;
 using ContactService.Domain.Entities;
-using ContactService.Domain.Models;
 using ContactService.Domain.Repositories;
 using Mapster;
 using Microsoft.EntityFrameworkCore;

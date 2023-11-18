@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ContactProject.Core\ContactProject.Core.csproj"/>
         <ProjectReference Include="..\ReportService.Domain\ReportService.Domain.csproj"/>
     </ItemGroup>
 

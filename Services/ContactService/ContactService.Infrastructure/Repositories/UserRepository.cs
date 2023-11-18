@@ -1,8 +1,8 @@
 ﻿using ContactService.Domain.Entities;
 using ContactService.Domain.Enums;
-using ContactService.Domain.Models;
 using ContactService.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using ContactProject.Core.ReportModels;
 
 namespace ContactService.Infrastructure.Repositories;
 

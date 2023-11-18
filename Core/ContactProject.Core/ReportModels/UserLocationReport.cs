@@ -1,4 +1,4 @@
-﻿namespace ContactService.Domain.Models;
+﻿namespace ContactProject.Core.ReportModels;
 
 public class UserLocationReport
 {

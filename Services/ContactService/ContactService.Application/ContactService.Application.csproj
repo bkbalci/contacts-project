@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ContactProject.Core\ContactProject.Core.csproj" />
       <ProjectReference Include="..\ContactService.Infrastructure\ContactService.Infrastructure.csproj" />
     </ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using ContactProject.Core.ReportModels;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json.Linq;
 using ReportService.Domain.Enums;
@@ -14,5 +15,5 @@ public class Report
 
     public ReportStatus ReportStatus { get; set; }
     
-    public List<BsonDocument> Content { get; set; }
+    public List<UserLocationReport> Content { get; set; }
 }

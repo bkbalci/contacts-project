@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ContactService.Application\ContactService.Application.csproj" />
+    <ProjectReference Include="..\..\..\Services\ContactService\ContactService.Application\ContactService.Application.csproj" />
     <ProjectReference Include="..\ReportService.Application\ReportService.Application.csproj" />
   </ItemGroup>
 </Project>
